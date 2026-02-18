@@ -1,0 +1,5 @@
+COSC 112 requires COSC 111
+Freshman recommended courses include COSC 111 and MATH 141
+Tutoring lab available for CS students
+Advising office provides course planning support
+
