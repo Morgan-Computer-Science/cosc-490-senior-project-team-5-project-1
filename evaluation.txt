@@ -1,0 +1,16 @@
+Evaluation Test Cases
+
+1. Question: What is the prerequisite for COSC 112?
+Expected Agent: Prerequisite Checking Agent
+
+2. Question: How many credits are required for the Computer Science degree?
+Expected Agent: Degree Planning Agent
+
+3. Question: What courses are in the freshman year sequence?
+Expected Agent: Degree Planning Agent
+
+4. Question: Is tutoring available for CS students?
+Expected Agent: Student Resources Agent
+
+5. Question: Should students meet with an advisor before upper level courses?
+Expected Agent: Advising and Policy Agent
