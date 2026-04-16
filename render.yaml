@@ -1,0 +1,29 @@
+services:
+  # Python FastAPI AI backend — handles all Groq AI chat logic
+  - type: web
+    name: bearbot-api
+    runtime: python
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: PORT
+        value: "10000"
+
+  # Node.js Express web server — serves React build + proxies /api to Python backend
+  - type: web
+    name: bearbot-web
+    runtime: node
+    plan: free
+    buildCommand: npm install && cd server && npm install && cd ../client && npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: PYTHON_API_URL
+        sync: false
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10001"

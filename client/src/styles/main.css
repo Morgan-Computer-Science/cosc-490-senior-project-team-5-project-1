@@ -1,0 +1,743 @@
+/* ============================================================
+   Morgan State University — BearBot Chatbot Styles
+   Colors: MSU Blue (#003087) and Gold (#F5A623)
+   ============================================================ */
+
+:root {
+  --msu-blue: #003087;
+  --msu-blue-light: #1a4ba0;
+  --msu-blue-dark: #001f5e;
+  --msu-blue-hover: #0a3a9a;
+  --msu-gold: #F5A623;
+  --msu-gold-light: #FFB84D;
+  --msu-gold-dark: #D4891A;
+  --msu-white: #ffffff;
+  --msu-gray-light: #f4f6f9;
+  --msu-gray: #e2e8f0;
+  --msu-gray-medium: #cbd5e1;
+  --msu-gray-dark: #64748b;
+  --msu-text: #0f172a;
+  --msu-text-light: #475569;
+  --shadow-sm: 0 1px 3px rgba(0, 48, 135, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 48, 135, 0.12);
+  --shadow-lg: 0 8px 24px rgba(0, 48, 135, 0.18);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-xs: 6px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--msu-gray-light);
+  color: var(--msu-text);
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ============================================================
+   APP LAYOUT
+   ============================================================ */
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.sidebar {
+  width: 290px;
+  background: linear-gradient(180deg, var(--msu-blue-dark) 0%, #001240 100%);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.15) transparent;
+}
+
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+.sidebar-header {
+  padding: 20px 18px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0,0,0,0.2);
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2px;
+}
+
+.sidebar-logo-bear {
+  font-size: 32px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.sidebar-logo-text h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--msu-gold);
+  line-height: 1.1;
+  letter-spacing: -0.3px;
+}
+
+.sidebar-logo-text span {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.04em;
+}
+
+.sidebar-tagline {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 6px;
+  font-style: italic;
+}
+
+.sidebar-section {
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-section-title {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--msu-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+/* Year Selector */
+.year-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.year-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.year-label:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+.year-label.active {
+  background: rgba(245, 166, 35, 0.18);
+  color: var(--msu-gold-light);
+}
+
+.year-label input[type="radio"] {
+  accent-color: var(--msu-gold);
+  width: 14px;
+  height: 14px;
+}
+
+.year-emoji {
+  font-size: 14px;
+}
+
+/* Quick Action Buttons */
+.quick-action-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-xs);
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+  padding: 7px 10px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  transition: all 0.15s;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.4;
+}
+
+.quick-action-btn:hover {
+  background: rgba(245, 166, 35, 0.15);
+  border-color: rgba(245, 166, 35, 0.4);
+  color: white;
+}
+
+/* New Chat Button */
+.new-chat-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px 18px;
+  padding: 10px 16px;
+  background: var(--msu-gold);
+  color: var(--msu-blue-dark);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.01em;
+}
+
+.new-chat-btn:hover {
+  background: var(--msu-gold-light);
+  transform: translateY(-1px);
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 14px 18px;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sidebar-footer p {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.38);
+  line-height: 1.7;
+}
+
+.sidebar-footer strong {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+}
+
+/* ============================================================
+   MAIN CHAT AREA
+   ============================================================ */
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: white;
+  min-width: 0;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.chat-header {
+  background: var(--msu-blue);
+  color: white;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 48, 135, 0.3);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.chat-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--msu-gold) 0%, var(--msu-gold-light) 50%, var(--msu-gold) 100%);
+}
+
+.chat-header-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-dot {
+  width: 9px;
+  height: 9px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  animation: pulse-dot 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(0.85); }
+}
+
+.chat-header-text h2 {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+}
+
+.chat-header-text p {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 1px;
+}
+
+.header-badge {
+  background: rgba(245, 166, 35, 0.15);
+  border: 1px solid rgba(245, 166, 35, 0.5);
+  color: var(--msu-gold-light);
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   CHAT WINDOW
+   ============================================================ */
+
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--msu-gray-light);
+  scrollbar-width: thin;
+  scrollbar-color: var(--msu-gray-medium) transparent;
+}
+
+.chat-window::-webkit-scrollbar { width: 6px; }
+.chat-window::-webkit-scrollbar-track { background: transparent; }
+.chat-window::-webkit-scrollbar-thumb { background: var(--msu-gray-medium); border-radius: 3px; }
+
+/* ============================================================
+   WELCOME SCREEN
+   ============================================================ */
+
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: 32px 20px;
+  min-height: 400px;
+}
+
+.welcome-bear {
+  font-size: 80px;
+  margin-bottom: 12px;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(0,48,135,0.2));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.welcome-msu-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--msu-blue);
+  color: white;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.welcome-screen h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--msu-blue);
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+
+.welcome-screen > p {
+  font-size: 15px;
+  color: var(--msu-text-light);
+  max-width: 500px;
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+
+.welcome-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  max-width: 580px;
+}
+
+.chip {
+  background: white;
+  border: 1.5px solid var(--msu-blue);
+  color: var(--msu-blue);
+  padding: 8px 16px;
+  border-radius: 22px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  box-shadow: var(--shadow-sm);
+}
+
+.chip:hover {
+  background: var(--msu-blue);
+  color: white;
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   MESSAGES
+   ============================================================ */
+
+.message-row {
+  display: flex;
+  gap: 10px;
+  animation: msg-in 0.3s ease;
+  align-items: flex-end;
+}
+
+@keyframes msg-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.message-row.user {
+  flex-direction: row-reverse;
+}
+
+.message-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.message-avatar.bot {
+  background: var(--msu-blue);
+  border: 2px solid rgba(255,255,255,0.9);
+}
+
+.message-avatar.user-av {
+  background: var(--msu-gold);
+  border: 2px solid rgba(255,255,255,0.9);
+}
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 72%;
+}
+
+.message-row.user .message-content {
+  align-items: flex-end;
+}
+
+.message-bubble {
+  padding: 11px 16px;
+  border-radius: 18px;
+  font-size: 14px;
+  line-height: 1.65;
+  word-break: break-word;
+}
+
+.message-bubble.bot {
+  background: white;
+  color: var(--msu-text);
+  border-radius: 4px 18px 18px 18px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--msu-gray);
+}
+
+.message-bubble.user {
+  background: linear-gradient(135deg, var(--msu-blue-light) 0%, var(--msu-blue) 100%);
+  color: white;
+  border-radius: 18px 4px 18px 18px;
+  box-shadow: var(--shadow-md);
+}
+
+/* Markdown styling inside bot messages */
+.message-bubble.bot p { margin-bottom: 8px; }
+.message-bubble.bot p:last-child { margin-bottom: 0; }
+.message-bubble.bot ul,
+.message-bubble.bot ol { padding-left: 20px; margin: 6px 0; }
+.message-bubble.bot li { margin-bottom: 4px; }
+.message-bubble.bot strong { color: var(--msu-blue-dark); font-weight: 600; }
+.message-bubble.bot em { color: var(--msu-text-light); }
+.message-bubble.bot h1,
+.message-bubble.bot h2,
+.message-bubble.bot h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--msu-blue);
+  margin: 12px 0 6px;
+}
+.message-bubble.bot code {
+  background: var(--msu-gray-light);
+  border: 1px solid var(--msu-gray);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'Courier New', monospace;
+}
+.message-bubble.bot pre {
+  background: var(--msu-text);
+  color: #e2e8f0;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  overflow-x: auto;
+  margin: 8px 0;
+  font-size: 12px;
+}
+.message-bubble.bot pre code {
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 0;
+}
+.message-bubble.bot a {
+  color: var(--msu-blue-light);
+  text-decoration: underline;
+}
+.message-bubble.bot blockquote {
+  border-left: 3px solid var(--msu-gold);
+  padding-left: 12px;
+  margin: 8px 0;
+  color: var(--msu-text-light);
+  font-style: italic;
+}
+
+.message-time {
+  font-size: 10px;
+  color: var(--msu-gray-dark);
+  margin-top: 4px;
+  padding: 0 6px;
+}
+
+.message-row.user .message-time {
+  text-align: right;
+}
+
+/* ============================================================
+   TYPING INDICATOR
+   ============================================================ */
+
+.typing-indicator {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  animation: msg-in 0.3s ease;
+}
+
+.typing-bubble {
+  background: white;
+  border: 1px solid var(--msu-gray);
+  padding: 12px 16px;
+  border-radius: 4px 18px 18px 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: var(--shadow-sm);
+}
+
+.typing-text {
+  font-size: 11px;
+  color: var(--msu-gray-dark);
+  margin-right: 4px;
+  font-style: italic;
+}
+
+.typing-dot {
+  width: 7px;
+  height: 7px;
+  background: var(--msu-blue);
+  border-radius: 50%;
+  animation: typing 1.3s ease-in-out infinite;
+  opacity: 0.4;
+}
+
+.typing-dot:nth-child(2) { animation-delay: 0.18s; }
+.typing-dot:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes typing {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+  40% { transform: translateY(-7px); opacity: 1; }
+}
+
+/* ============================================================
+   INPUT BAR
+   ============================================================ */
+
+.input-area {
+  background: white;
+  border-top: 1px solid var(--msu-gray);
+  padding: 14px 24px 18px;
+  flex-shrink: 0;
+  box-shadow: 0 -2px 12px rgba(0,48,135,0.06);
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.input-textarea {
+  flex: 1;
+  padding: 11px 16px;
+  border: 2px solid var(--msu-gray-medium);
+  border-radius: var(--radius);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  resize: none;
+  min-height: 46px;
+  max-height: 140px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  line-height: 1.55;
+  color: var(--msu-text);
+  background: var(--msu-gray-light);
+}
+
+.input-textarea:focus {
+  border-color: var(--msu-blue);
+  background: white;
+  box-shadow: 0 0 0 3px rgba(0, 48, 135, 0.08);
+}
+
+.input-textarea::placeholder {
+  color: var(--msu-gray-dark);
+}
+
+.send-btn {
+  width: 46px;
+  height: 46px;
+  background: var(--msu-blue);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.18s;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.send-btn:hover:not(:disabled) {
+  background: var(--msu-blue-hover);
+  transform: scale(1.06);
+  box-shadow: var(--shadow-md);
+}
+
+.send-btn:disabled {
+  background: var(--msu-gray-medium);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.input-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 7px;
+  padding: 0 2px;
+}
+
+.input-hint {
+  font-size: 11px;
+  color: var(--msu-gray-dark);
+}
+
+.char-count {
+  font-size: 11px;
+  color: var(--msu-gray-dark);
+  transition: color 0.2s;
+}
+
+.char-count.warn { color: #ef4444; font-weight: 600; }
+
+/* ============================================================
+   ERROR TOAST
+   ============================================================ */
+
+.error-toast {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #ef4444;
+  color: #b91c1c;
+  padding: 10px 20px;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .chat-window {
+    padding: 16px 14px 12px;
+  }
+
+  .input-area {
+    padding: 12px 14px 16px;
+  }
+
+  .message-content {
+    max-width: 85%;
+  }
+
+  .welcome-bear { font-size: 56px; }
+  .welcome-screen h2 { font-size: 22px; }
+  .welcome-screen > p { font-size: 14px; }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "morgan-cs-advisor",
+  "version": "2.0.0",
+  "description": "BearBot — Morgan State CS Academic Advisor. React + Node.js + Python FastAPI + Groq AI",
+  "scripts": {
+    "dev": "concurrently -n \"api,server,client\" -c \"blue,green,yellow\" \"npm run api\" \"npm run server\" \"npm run client\"",
+    "api": "cd backend && uvicorn main:app --reload --port 8000",
+    "server": "cd server && node server.js",
+    "client": "cd client && npm run dev",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install && pip install -r ../backend/requirements.txt",
+    "build": "cd client && npm run build",
+    "start": "cd server && node server.js"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,30 @@
+# Node
+node_modules/
+server/node_modules/
+client/node_modules/
+client/dist/
+
+# Environment files (never commit keys)
+.env
+server/.env
+backend/.env
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+env/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
