@@ -22,6 +22,9 @@ dist/
 build/
 .pytest_cache/
 
+# Vector DB
+chroma_db/
+
 # macOS
 .DS_Store
 
