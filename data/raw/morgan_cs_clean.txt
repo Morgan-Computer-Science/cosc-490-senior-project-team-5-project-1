@@ -1,0 +1,40 @@
+Morgan State University Computer Science Advising Knowledge Base
+
+Degree Requirements
+The Bachelor of Science in Computer Science requires 120 total credits.
+COSC 490 Senior Project is taken during the senior year.
+Students should follow the official curriculum sequence when planning courses.
+
+Freshman Year
+Freshman year includes COSC 111 Intro to Computer Science I.
+Freshman year includes COSC 112 Introduction to Computer Science II.
+Freshman year includes MATH 241 Calculus I.
+Freshman year includes MATH 242 Calculus II.
+
+Sophomore Year
+Sophomore year includes COSC 220 Data Structures and Algorithms.
+Sophomore year includes COSC 241 Computer Systems and Digital Logic.
+Sophomore year includes COSC 281 Discrete Structure.
+Sophomore year includes MATH 312 Linear Algebra I.
+
+Junior Year
+Junior year includes COSC 349 Computer Networks.
+Junior year includes COSC 351 Cybersecurity.
+Junior year includes COSC 352 Organization of Programming Languages.
+Junior year includes COSC 354 Operating Systems.
+Junior year includes MATH 331 Applied Probability and Statistics.
+
+Senior Year
+Senior year includes COSC 458 Software Engineering.
+Senior year includes COSC 459 Database Design.
+Senior year includes COSC 490 Senior Project.
+
+Prerequisites and Advising
+COSC 112 is taken after COSC 111.
+Students should verify prerequisites and course sequencing with the department or an academic advisor.
+Students should meet with an academic advisor for course planning and degree progress questions.
+
+Student Support Resources
+Tutoring and academic support resources are available for students.
+Students can contact the Computer Science department for advising guidance.
+Internships and career support are important for Computer Science students, especially before senior year.

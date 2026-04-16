@@ -1,0 +1,59 @@
+Morgan State University Computer Science Curriculum Sequence
+
+Freshman Year First Semester
+COSC 111 Intro to Computer Science I
+ENGL 101 Freshman Composition I
+MATH 241 Calculus I
+General Education Requirement
+ORNS 106 Freshman Orientation
+
+Freshman Year Second Semester
+ENGL 102 Freshman Composition II
+General Education Requirement
+Physical Education Activity or FIN 101
+COSC 112 Introduction to Computer Science II
+MATH 242 Calculus II
+
+Sophomore Year Third Semester
+COSC 220 Data Structures and Algorithms
+COSC 241 Computer Systems and Digital Logic
+General Education Requirement
+COSC Group A Elective
+COSC 201 Computer Ethics
+
+Sophomore Year Fourth Semester
+COSC 281 Discrete Structure
+COSC Group A Elective
+COSC Group A Elective
+MATH 312 Linear Algebra I
+General Education Requirement
+
+Junior Year Fifth Semester
+COSC 349 Computer Networks
+COSC 351 Cybersecurity
+COSC 352 Organization of Programming Languages
+COSC Group B Elective
+General Education Requirement
+
+Junior Year Sixth Semester
+COSC 354 Operating Systems
+MATH 331 Applied Probability and Statistics
+COSC Group B Elective
+General Education Requirement
+General Education Requirement
+
+Senior Year Seventh Semester
+COSC 458 Software Engineering
+COSC 459 Database Design
+COSC 490 Senior Project
+COSC Group C Elective
+General Education Requirement
+
+Senior Year Eighth Semester
+COSC Group C Elective
+COSC Group C Elective
+COSC Group D Elective
+COSC Group D Elective
+General Education Requirement
+
+Total Credits: 120
