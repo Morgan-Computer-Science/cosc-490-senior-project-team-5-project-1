@@ -158,13 +158,14 @@ export default function Sidebar({ studentYear, setStudentYear, onQuickAction, on
       {/* Footer */}
       <div className="sidebar-footer">
         <p>
-          <strong>Need official advising?</strong><br />
-          📧 scmns.advising@morgan.edu<br />
-          📍 Carnegie Hall<br />
-          📞 443-885-3333<br />
+          <strong>Contact Information</strong><br />
+          Center for Academic Success and Achievement (CASA)<br />
+          📍 Tyler Hall, Suite 117<br />
+          1700 E. Cold Spring Lane<br />
+          Baltimore, Maryland 21251<br />
           <br />
-          <strong>Counseling Center:</strong><br />
-          📞 443-885-3130
+          📞 443-885-3380<br />
+          📧 CASA@morgan.edu
         </p>
       </div>
     </div>
