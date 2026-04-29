@@ -1,11 +1,27 @@
+"""
+Official Morgan State University CS curriculum knowledge base.
+Source: Morgan State University 2022–2024 Undergraduate Catalog (Archived)
+        catalog.morgan.edu — School of Computer, Mathematical, and Natural Sciences
+All course numbers, titles, and credit hours are taken directly from that document.
+"""
+
 MORGAN_KNOWLEDGE = {
+
+    "source": {
+        "document": "Morgan State University 2022–2024 Undergraduate Catalog (Archived)",
+        "url": "https://catalog.morgan.edu",
+        "school": "School of Computer, Mathematical and Natural Sciences",
+        "degree": "Computer Science, B.S.",
+        "note": "All course data below comes directly from this official document."
+    },
+
     "university": {
         "name": "Morgan State University",
         "nickname": "The Truth",
         "mascot": "Spike the Bear",
         "colors": "Blue and Gold",
         "location": "Baltimore, Maryland",
-        "type": "HBCU - Historically Black College and University",
+        "type": "HBCU — Historically Black College and University",
         "founded": 1867,
         "website": "https://www.morgan.edu",
         "phone": "443-885-3333"
@@ -21,138 +37,243 @@ MORGAN_KNOWLEDGE = {
         "advising_location": "Carnegie Hall"
     },
 
-    "freshmanInfo": {
-        "year": "Freshman (1st Year)",
-        "credits": "0-29 credits",
-        "typicalCourses": [
-            "COSC 111 - Introduction to Computer Science I",
-            "COSC 112 - Introduction to Computer Science II",
-            "MATH 241 - Calculus I",
-            "MATH 242 - Calculus II",
-            "ENGL 101 - English Composition I",
-            "ENGL 102 - English Composition II",
-            "General Education Requirements"
-        ],
-        "priorities": [
-            "Attend orientation and meet your advisor",
-            "Join the CS Student Association",
-            "Visit the Student Success Center",
-            "Apply for financial aid/FAFSA early",
-            "Learn the Student Information System (Banner)",
-            "Get your Morgan email and Bear Card"
-        ],
-        "tips": "Focus on building strong foundations in programming (Python/Java) and math. Office hours are your best resource!"
-    },
-
-    "sophomoreInfo": {
-        "year": "Sophomore (2nd Year)",
-        "credits": "30-59 credits",
-        "typicalCourses": [
-            "COSC 210 - Data Structures",
-            "COSC 250 - Computer Organization",
-            "COSC 230 - Discrete Mathematics",
-            "MATH 343 - Calculus III",
-            "COSC 260 - Software Engineering",
-            "Additional Gen Ed Requirements"
-        ],
-        "priorities": [
-            "Begin exploring internship opportunities",
-            "Join a research lab or project",
-            "Build your first portfolio projects",
-            "Consider declaring a CS concentration",
-            "Start attending career fairs",
-            "Apply for summer research programs (REU)"
-        ],
-        "tips": "Data Structures (COSC 210) is critical — it is used in most upper-level courses and interviews."
-    },
-
-    "juniorInfo": {
-        "year": "Junior (3rd Year)",
-        "credits": "60-89 credits",
-        "typicalCourses": [
-            "COSC 310 - Operating Systems",
-            "COSC 320 - Analysis of Algorithms",
-            "COSC 350 - Database Systems",
-            "COSC 360 - Computer Networks",
-            "CS Electives based on concentration",
-            "Upper division requirements"
-        ],
-        "priorities": [
-            "Secure a summer internship",
-            "Start LeetCode and interview prep",
-            "Attend Grace Hopper, NSBE, NBMBAA conferences",
-            "Build a strong GitHub portfolio",
-            "Apply for graduate school if interested",
-            "Begin senior project planning"
-        ],
-        "tips": "Junior year internships often convert to full-time offers. Start applying in September for summer positions!"
-    },
-
-    "seniorInfo": {
-        "year": "Senior (4th Year)",
-        "credits": "90+ credits",
-        "typicalCourses": [
-            "COSC 490 - Senior Project I",
-            "COSC 491 - Senior Project II",
-            "Advanced CS electives",
-            "Remaining degree requirements"
-        ],
-        "priorities": [
-            "Complete senior capstone project",
-            "Full-time job or grad school applications",
-            "Apply for graduation — check deadlines!",
-            "Network at career fairs",
-            "Polish resume and LinkedIn",
-            "Check for any outstanding degree requirements"
-        ],
-        "tips": "Apply for graduation early — visit the Registrar and confirm all requirements are met with your advisor."
-    },
-
-    "resources": {
-        "tutoring": {
-            "name": "Student Success Center / Math & CS Tutoring",
-            "location": "Montebello Complex",
-            "services": ["Free tutoring", "Study groups", "Writing help", "Academic coaching"]
+    # ── Graduation Requirements (directly from the catalog) ──────────────────
+    "graduationRequirements": {
+        "total_credits": 120,
+        "credit_breakdown": {
+            "general_education_and_university": 44,
+            "supporting_courses": 11,
+            "required_cs_major_courses": 65
         },
-        "career": {
-            "name": "Career Center",
-            "location": "Montebello D Building",
-            "services": ["Resume reviews", "Mock interviews", "Job fair prep", "Internship search", "Career counseling"]
+        "school_wide_requirements": [
+            "Complete all Computer Science Major Requirements",
+            "Complete all General Education Requirements",
+            "Earn 6 credits in the Complementary Studies Program (required for all SCMNS majors)",
+            "Pass the Senior Departmental Comprehensive Examination",
+            "Take all junior- and senior-level major requirements at Morgan State University (written Dean permission required to take elsewhere)",
+            "Earn a cumulative GPA of 2.0 or better",
+            "Earn a major GPA of 2.0 or better",
+            "No outstanding grades below 'C' in any major or required supporting course"
+        ]
+    },
+
+    # ── General Education & University Requirements (44 credits) ─────────────
+    "generalEducationRequirements": {
+        "total_credits": 44,
+        "courses": [
+            {"course": "ENGL 101 or ENGL 111", "title": "Freshman Composition I (or Honors)", "credits": 3, "area": "EC"},
+            {"course": "ENGL 102 or ENGL 112", "title": "Freshman Composition II (or Honors)", "credits": 3, "area": "EC"},
+            {"course": "MATH 241*",             "title": "Calculus I", "credits": 4, "area": "MQ"},
+            {"course": "COSC 111*",             "title": "Introduction to Computer Science I", "credits": 4, "area": "IM"},
+            {"course": "XXXX",                  "title": "HH General Education Requirement", "credits": 3, "area": "HH"},
+            {"course": "XXXX",                  "title": "AH General Education Requirement", "credits": 3, "area": "AH"},
+            {"course": "XXXX",                  "title": "AH General Education Requirement", "credits": 3, "area": "AH"},
+            {"course": "XXXX",                  "title": "BP General Education Requirement (with lab)", "credits": 4, "area": "BP"},
+            {"course": "XXXX",                  "title": "BP General Education Requirement (no lab)", "credits": 3, "area": "BP"},
+            {"course": "XXXX",                  "title": "SB General Education Requirement", "credits": 3, "area": "SB"},
+            {"course": "XXXX",                  "title": "SB General Education Requirement", "credits": 3, "area": "SB"},
+            {"course": "XXXX",                  "title": "CI General Education Requirement", "credits": 3, "area": "CI"},
+            {"course": "XXXX",                  "title": "CT General Education Requirement", "credits": 3, "area": "CT"},
+            {"course": "ORNS 106",              "title": "Freshman Orientation for Majors in SCMNS", "credits": 1, "area": "orientation"},
+            {"course": "XXXX",                  "title": "Physical Activity or FIN 101 or MIND 101 or DSVG 101 or FACS 102", "credits": 1, "area": "wellness"}
+        ],
+        "note": "* Denotes a course that may fulfill a Gen Ed requirement but must be completed with a grade of 'C' or higher."
+    },
+
+    # ── Supporting Courses (11 credits) ──────────────────────────────────────
+    "supportingCourses": {
+        "total_credits": 11,
+        "courses": [
+            {"course": "MATH 241*", "title": "Calculus I",                         "credits": 4},
+            {"course": "MATH 242",  "title": "Calculus II",                        "credits": 4},
+            {"course": "MATH 312",  "title": "Linear Algebra I",                   "credits": 3},
+            {"course": "MATH 331",  "title": "Applied Probability and Statistics", "credits": 3},
+            {"course": "COSC 201",  "title": "Computer Ethics",                    "credits": 1}
+        ],
+        "note": "MATH 241 must be completed with a grade of 'C' or higher. Credits are shared with Gen Ed requirements."
+    },
+
+    # ── Required CS Major Courses (65 credits) ───────────────────────────────
+    "requiredCSCourses": {
+        "total_credits": 65,
+        "grade_requirement": "All courses must be completed with a grade of 'C' or higher.",
+        "core_courses": [
+            {"course": "COSC 111*", "title": "Introduction to Computer Science I",     "credits": 4},
+            {"course": "COSC 112",  "title": "Introduction to Computer Science II",    "credits": 4},
+            {"course": "COSC 220",  "title": "Data Structures and Algorithms",         "credits": 4},
+            {"course": "COSC 241",  "title": "Computer Systems and Digital Logic",     "credits": 3},
+            {"course": "COSC 281",  "title": "Discrete Structure",                     "credits": 3},
+            {"course": "COSC 349",  "title": "Computer Networks",                      "credits": 3},
+            {"course": "COSC 351",  "title": "Cybersecurity",                          "credits": 3},
+            {"course": "COSC 352",  "title": "Organization of Programming Languages",  "credits": 3},
+            {"course": "COSC 354",  "title": "Operating Systems",                      "credits": 3},
+            {"course": "COSC 458",  "title": "Software Engineering",                   "credits": 3},
+            {"course": "COSC 459",  "title": "Database Design",                        "credits": 3},
+            {"course": "COSC 490",  "title": "Senior Project",                         "credits": 3}
+        ],
+        "electives": {
+            "group_a": {
+                "description": "Choose three (3) courses",
+                "courses": [
+                    {"course": "COSC 238", "title": "Object Oriented Programming",     "credits": 4},
+                    {"course": "COSC 239", "title": "Java Programming",                "credits": 3},
+                    {"course": "COSC 243", "title": "Computer Architecture",           "credits": 3},
+                    {"course": "COSC 251", "title": "Introduction to Data Science",    "credits": 3},
+                    {"course": "CLCO 261", "title": "Introduction to Cloud Computing", "credits": 3}
+                ]
+            },
+            "group_b": {
+                "description": "Choose two (2) courses",
+                "courses": [
+                    {"course": "COSC 320", "title": "Algorithm Design and Analysis",               "credits": 3},
+                    {"course": "COSC 323", "title": "Introduction to Cryptography",                "credits": 3},
+                    {"course": "COSC 332", "title": "Introduction to Game Design and Development", "credits": 3},
+                    {"course": "COSC 338", "title": "Mobile App Design & Development",             "credits": 3},
+                    {"course": "COSC 383", "title": "Numerical Methods and Programming",           "credits": 3},
+                    {"course": "COSC 385", "title": "Theory of Languages and Automata",            "credits": 3},
+                    {"course": "COSC 386", "title": "Introduction to Quantum Computing",           "credits": 3},
+                    {"course": "MATH 313", "title": "Linear Algebra II",                           "credits": 3},
+                    {"course": "EEGR 317", "title": "Electronic Circuits",                         "credits": 4}
+                ]
+            },
+            "group_c": {
+                "description": "Choose four (4) courses",
+                "courses": [
+                    {"course": "COSC 470 or COSC 472", "title": "Artificial Intelligence or Introduction to Machine Learning", "credits": 3},
+                    {"course": "COSC 460", "title": "Computer Graphics",                                   "credits": 3},
+                    {"course": "COSC 480", "title": "Introduction to Image Processing and Analysis",       "credits": 3},
+                    {"course": "COSC 486", "title": "Applied Quantum Computing",                           "credits": 3},
+                    {"course": "COSC 491", "title": "Conference Course",                                   "credits": 3},
+                    {"course": "COSC 498", "title": "Senior Internship",                                   "credits": 3},
+                    {"course": "COSC 499", "title": "Senior Research or Teaching/Tutorial Assistantship", "credits": 3},
+                    {"course": "CLCO 471", "title": "Data Analytics in Cloud",                             "credits": 3}
+                ]
+            },
+            "group_d": {
+                "description": "Choose one (1) course",
+                "courses": [
+                    {"course": "INSS 391", "title": "IT Infrastructure and Security",          "credits": 3},
+                    {"course": "INSS 494", "title": "Information Security and Risk Management","credits": 3},
+                    {"course": "EEGR 481", "title": "Introduction to Network Security",        "credits": 3},
+                    {"course": "EEGR 483", "title": "Introduction to Security Management",     "credits": 3},
+                    {"course": "XXXX",     "title": "Any 300-400 level COSC course not previously taken", "credits": 3}
+                ]
+            }
+        }
+    },
+
+    # ── Year-by-year guide (based on official course sequence) ───────────────
+    "yearGuide": {
+        "freshman": {
+            "credits": "0-29",
+            "focus": "General Education foundations and intro CS courses",
+            "typical_courses": [
+                "ORNS 106 — Freshman Orientation for SCMNS Majors (1 cr)",
+                "COSC 111 — Introduction to Computer Science I (4 cr)",
+                "COSC 112 — Introduction to Computer Science II (4 cr)",
+                "ENGL 101/111 — Freshman Composition I (3 cr)",
+                "ENGL 102/112 — Freshman Composition II (3 cr)",
+                "MATH 241 — Calculus I (4 cr)",
+                "General Education requirements (HH, AH, SB, CI, CT, BP, wellness)"
+            ],
+            "grade_note": "COSC 111 and MATH 241 require a 'C' or higher to progress."
+        },
+        "sophomore": {
+            "credits": "30-59",
+            "focus": "Core CS courses and supporting math",
+            "typical_courses": [
+                "COSC 220 — Data Structures and Algorithms (4 cr)",
+                "COSC 241 — Computer Systems and Digital Logic (3 cr)",
+                "COSC 281 — Discrete Structure (3 cr)",
+                "MATH 242 — Calculus II (4 cr)",
+                "MATH 312 — Linear Algebra I (3 cr)",
+                "COSC 201 — Computer Ethics (1 cr)",
+                "Remaining General Education requirements"
+            ],
+            "grade_note": "All CS major courses require a 'C' or higher."
+        },
+        "junior": {
+            "credits": "60-89",
+            "focus": "Upper-level required CS courses and electives",
+            "typical_courses": [
+                "COSC 349 — Computer Networks (3 cr)",
+                "COSC 351 — Cybersecurity (3 cr)",
+                "COSC 352 — Organization of Programming Languages (3 cr)",
+                "COSC 354 — Operating Systems (3 cr)",
+                "COSC 458 — Software Engineering (3 cr)",
+                "COSC 459 — Database Design (3 cr)",
+                "MATH 331 — Applied Probability and Statistics (3 cr)",
+                "Group A and Group B electives"
+            ],
+            "grade_note": "All junior-level major requirements must be taken at Morgan State unless the Dean grants written permission."
+        },
+        "senior": {
+            "credits": "90+",
+            "focus": "Senior Project, remaining electives, and graduation preparation",
+            "typical_courses": [
+                "COSC 490 — Senior Project (3 cr)",
+                "Group C electives — choose 4 courses",
+                "Group D elective — choose 1 course",
+                "Any remaining degree requirements"
+            ],
+            "requirements": [
+                "Pass the Senior Departmental Comprehensive Examination",
+                "Apply for graduation the semester BEFORE your final semester — contact the Registrar",
+                "Confirm your degree audit with your advisor at scmns.advising@morgan.edu",
+                "All senior-level major requirements must be completed at Morgan State unless the Dean grants prior written permission"
+            ]
+        }
+    },
+
+    # ── Official campus resources (verified morgan.edu contacts) ─────────────
+    "resources": {
+        "advising": {
+            "name": "SCMNS Advising Center",
+            "email": "scmns.advising@morgan.edu",
+            "location": "Carnegie Hall",
+            "url": "https://www.morgan.edu/scmns"
+        },
+        "registrar": {
+            "name": "Office of the Registrar",
+            "url": "https://www.morgan.edu/registrar",
+            "note": "For graduation application, degree audit, and transcript requests."
         },
         "financialAid": {
             "name": "Office of Student Financial Aid",
             "location": "Truth Hall",
             "phone": "443-885-3170",
-            "services": ["Scholarships", "Grants", "Work-study", "Loans", "FAFSA help"]
+            "url": "https://www.morgan.edu/financial_aid"
+        },
+        "tutoring": {
+            "name": "Student Success Center",
+            "location": "Montebello Complex",
+            "url": "https://www.morgan.edu/student_success_center"
+        },
+        "career": {
+            "name": "Career Center",
+            "location": "Montebello D Building",
+            "url": "https://www.morgan.edu/career_center"
         },
         "mentalHealth": {
             "name": "Counseling Center",
             "location": "Montebello Complex C",
             "phone": "443-885-3130",
-            "services": ["Individual counseling", "Group sessions", "Crisis support", "Mental health resources"]
+            "url": "https://www.morgan.edu/counseling_center"
         },
         "library": {
             "name": "Earl S. Richardson Library",
-            "services": ["Research databases", "Study rooms", "Printing", "Laptops and tech loan", "Research assistance"]
+            "url": "https://www.morgan.edu/library"
         },
-        "disability": {
+        "accessibility": {
             "name": "Office of Accessibility Services",
             "location": "Montebello Complex C",
-            "services": ["Accommodations", "Testing support", "Assistive technology"]
+            "url": "https://www.morgan.edu/accessibility"
         }
-    },
-
-    "deadlines": {
-        "registration": "Priority registration opens based on credit hours — check Banner/WebEx",
-        "graduation": "Apply for graduation in the semester BEFORE your final semester",
-        "addDrop": "Add/Drop period is the first week of classes each semester",
-        "withdrawal": "Academic withdrawal deadline is usually Week 10 — check academic calendar",
-        "fafsa": "FAFSA opens October 1 — apply as early as possible for maximum aid"
     },
 
     "clubs": [
         "CS Student Association (CSSA)",
-        "National Society of Black Engineers (NSBE) - Morgan Chapter",
+        "National Society of Black Engineers (NSBE) — Morgan Chapter",
         "Association of Computing Machinery (ACM)",
         "Women in Computer Science",
         "Cybersecurity Club",
@@ -161,34 +282,216 @@ MORGAN_KNOWLEDGE = {
         "Robotics Team"
     ],
 
-    "commonQuestions": {
-        "gpa": "Maintain a 2.0 GPA to stay in good academic standing. CS major courses require a C or better to progress. Aim for 3.0+ for graduate school or competitive internships.",
-        "transferCredits": "Transfer credits must be evaluated by the Registrar. CS-specific transfers need departmental approval.",
-        "retakingCourse": "You may retake a course to replace a low grade. The new grade replaces the old in GPA calculation, but both appear on transcript.",
-        "internshipCredit": "Ask your advisor about COSC 480 (Cooperative Education/Internship) for academic credit.",
-        "doubleMinor": "Popular minors with CS: Mathematics, Cybersecurity, Data Science, Business Administration."
+    # ── Faculty & Staff Directory ─────────────────────────────────────────────
+    # Source: morgan.edu/computer-science/faculty-and-staff
+    "facultyAndStaff": {
+        "source": "Morgan State University — Department of Computer Science | morgan.edu/computer-science/faculty-and-staff",
+        "address": "1700 East Cold Spring Lane, Baltimore, Maryland 21251",
+        "department_phone": "(443) 885-3333",
+        "social_media": "@Morgan_CompSci on Twitter / X",
+
+        "departmentLeadership": [
+            {
+                "name": 'Shuangbao "Paul" Wang',
+                "title": "Professor and Chair",
+                "office": "McMechen Hall 507",
+                "phone": "(443) 885-4503",
+                "email": "shuangbao.wang@morgan.edu",
+                "dept_email": "cs-chair@morgan.edu"
+            },
+            {
+                "name": "Md Rahman",
+                "title": "Professor, Associate Chair, Director of PhD Advanced Computing",
+                "office": "McMechen Hall 629",
+                "phone": "(443) 885-1056",
+                "email": "Md.Rahman@morgan.edu"
+            },
+            {
+                "name": "Radhouane Chouchane (Radwan Shushane)",
+                "title": "Associate Professor, Director of Undergraduate Studies",
+                "office": "McMechen Hall 624",
+                "phone": "(443) 885-3745",
+                "email": "Radwan.Shushane@morgan.edu"
+            }
+        ],
+
+        "professors": [
+            {
+                "name": "Amjad Ali",
+                "title": "Professor",
+                "office": "McMechen Hall 502",
+                "email": "amjad.ali@morgan.edu"
+            },
+            {
+                "name": "Radhouane Chouchane (Radwan Shushane)",
+                "title": "Associate Professor, Director of Undergraduate Studies",
+                "office": "McMechen Hall 624",
+                "phone": "(443) 885-3745",
+                "email": "Radwan.Shushane@morgan.edu"
+            },
+            {
+                "name": "Monireh Dabaghchian",
+                "title": "Associate Professor",
+                "office": "McMechen Hall 508",
+                "phone": "(443) 885-2348",
+                "email": "Monireh.Dabaghchian@morgan.edu"
+            },
+            {
+                "name": "Jamell Dacon",
+                "title": "Assistant Professor",
+                "office": "McMechen Hall 625",
+                "email": "jamell.dacon@morgan.edu"
+            },
+            {
+                "name": "Jin Guo",
+                "title": "Professor of Practice",
+                "office": "McMechen Hall 502",
+                "email": "jin.guo@morgan.edu"
+            },
+            {
+                "name": "Vahid Heydari",
+                "title": "Associate Professor",
+                "office": "McMechen Hall 619",
+                "email": "vahid.heydari@morgan.edu"
+            },
+            {
+                "name": "Naja Mack",
+                "title": "Assistant Professor",
+                "office": "McMechen Hall 623",
+                "lab": "McMechen Hall 616",
+                "phone": "(443) 885-2402",
+                "email": "Naja.Mack@morgan.edu"
+            },
+            {
+                "name": "Jianzhou Mao",
+                "title": "Research Assistant Professor",
+                "office": "McMechen Hall 627",
+                "email": "jianzhou.mao@morgan.edu"
+            },
+            {
+                "name": "Blessing Ojeme",
+                "title": "Assistant Professor",
+                "office": "McMechen Hall 621",
+                "email": "blessing.ojeme@morgan.edu"
+            },
+            {
+                "name": "Roshan Paudel",
+                "title": "Coordinator of the MS in Bioinformatics Program, Professor of Practice",
+                "office": "McMechen Hall 507D",
+                "phone": "(443) 885-3096",
+                "email": "Roshan.Paudel@morgan.edu"
+            },
+            {
+                "name": "Md Rahman",
+                "title": "Professor, Associate Chair, Director of PhD Advanced Computing",
+                "office": "McMechen Hall 629",
+                "phone": "(443) 885-1056",
+                "email": "Md.Rahman@morgan.edu"
+            },
+            {
+                "name": "Eric Sakk",
+                "title": "Associate Professor",
+                "office": "McMechen Hall 507F",
+                "phone": "(443) 885-3270",
+                "email": "Eric.Sakk@morgan.edu"
+            },
+            {
+                "name": "Vojislav Stojkovic",
+                "title": "Associate Professor",
+                "office": "McMechen Hall 507E",
+                "phone": "(443) 885-1054",
+                "email": "Vojislav.Stojkovic@morgan.edu"
+            },
+            {
+                "name": "Timothy Oladunni",
+                "title": "Assistant Professor",
+                "office": "McMechen Hall 617",
+                "email": "Timothy.Oladunni@morgan.edu"
+            },
+            {
+                "name": 'Shuangbao "Paul" Wang',
+                "title": "Professor and Chair",
+                "office": "McMechen Hall 507",
+                "phone": "(443) 885-4503",
+                "email": "shuangbao.wang@morgan.edu"
+            },
+            {
+                "name": "Guobin Xu",
+                "title": "Associate Professor, Director of MS Advanced Computing",
+                "office": "McMechen Hall 615",
+                "email": "guobin.xu@morgan.edu"
+            }
+        ],
+
+        "lecturers": [
+            {
+                "name": "Grace Steele",
+                "title": "Lecturer",
+                "office": "McMechen Hall 507C",
+                "phone": "(443) 885-1053",
+                "email": "Grace.Steele@morgan.edu"
+            },
+            {
+                "name": "Dr. Sam Tannouri",
+                "title": "Lecturer",
+                "office": "McMechen Hall 628",
+                "phone": "(443) 885-1055",
+                "email": "Sam.Tannouri@morgan.edu"
+            }
+        ],
+
+        "engineersInResidence": [
+            {
+                "name": "Rahmel Bailey",
+                "title": "Engineer in Residence",
+                "office": "McMechen Hall 618",
+                "email": "rahmel.bailey@codepath.org"
+            }
+        ],
+
+        "staff": [
+            {
+                "name": "Wendy Smith",
+                "title": "Administrative Assistant",
+                "office": "McMechen Hall 507A",
+                "phone": "(443) 885-3962",
+                "email": "Wendy.Smith@morgan.edu",
+                "dept_email": "compsci@morgan.edu"
+            }
+        ],
+
+        "departmentContacts": {
+            "chair": {
+                "person": 'Dr. Shuangbao "Paul" Wang',
+                "location": "McMechen Hall Suite 507",
+                "phone": "(443) 885-4503",
+                "fax": "(443) 885-8213",
+                "email": "cs-chair@morgan.edu"
+            },
+            "general_inquiries": {
+                "person": "Ms. Wendy Smith (Administrative Assistant)",
+                "location": "McMechen Hall Suite 507",
+                "phone": "(443) 885-3962",
+                "fax": "(443) 885-8213",
+                "email": "compsci@morgan.edu"
+            },
+            "undergraduate_studies_director": {
+                "person": "Radhouane Chouchane (Radwan Shushane)",
+                "location": "McMechen Hall 624",
+                "phone": "(443) 885-3745",
+                "email": "Radwan.Shushane@morgan.edu"
+            }
+        }
     },
 
-    "csTopics": {
-        "intro": {
-            "python": "Python is a beginner-friendly language used in COSC 111/112. Focus on variables, loops, functions, and basic OOP.",
-            "java": "Java is commonly used in introductory CS courses. Key concepts: classes, objects, inheritance, interfaces.",
-            "algorithms": "Algorithm analysis focuses on time/space complexity (Big-O). Common: O(1), O(log n), O(n), O(n log n), O(n^2)."
-        },
-        "intermediate": {
-            "dataStructures": "Core structures: Arrays, Linked Lists, Stacks, Queues, Trees, Hash Tables, Graphs. Know their time complexities.",
-            "oop": "OOP pillars: Encapsulation, Inheritance, Polymorphism, Abstraction. Practice with Java or Python.",
-            "databases": "SQL fundamentals: SELECT, JOIN, GROUP BY, indexes. COSC 350 covers relational database design."
-        },
-        "advanced": {
-            "os": "Operating Systems covers: processes, threads, memory management, file systems, scheduling algorithms.",
-            "networks": "Computer Networks: OSI model, TCP/IP, HTTP, DNS, routing protocols, socket programming.",
-            "algorithms_advanced": "Advanced algorithms: dynamic programming, greedy algorithms, graph algorithms (Dijkstra, BFS/DFS, MST)."
-        },
-        "interviewPrep": {
-            "leetcode": "Start with Easy problems on arrays and strings. Move to Medium for trees and graphs. Practice daily.",
-            "systemDesign": "For internships: understand basic client-server architecture, REST APIs, databases. For full-time: load balancing, caching, microservices.",
-            "behavioral": "Use STAR method (Situation, Task, Action, Result). Prepare 5-7 stories from projects and coursework."
-        }
+    "keyPolicies": {
+        "minimum_grade": "A grade of 'C' or higher is required in all CS major courses and required supporting courses.",
+        "cumulative_gpa": "A cumulative GPA of 2.0 or better is required for graduation.",
+        "major_gpa": "A major GPA of 2.0 or better is required for graduation.",
+        "senior_exam": "Students must pass the Senior Departmental Comprehensive Examination to graduate.",
+        "residency": "All junior- and senior-level major requirements must be completed at Morgan State University unless the Dean grants prior written permission.",
+        "graduation_application": "Apply for graduation in the semester BEFORE your final semester. Contact the Registrar at morgan.edu/registrar.",
+        "add_drop": "The add/drop period is the first week of classes each semester. Check the academic calendar at morgan.edu.",
+        "fafsa": "FAFSA opens October 1. Apply early for maximum aid. Contact Financial Aid at 443-885-3170."
     }
 }
