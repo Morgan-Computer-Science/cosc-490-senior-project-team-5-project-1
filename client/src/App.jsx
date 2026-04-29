@@ -7,6 +7,14 @@ import InputBar from './components/InputBar';
 
 const SESSION_KEY = 'bearbot_session_id';
 
+// Default agent info shown before the first message is sent
+const AGENT_DEFAULTS = {
+  Freshman:  { name: 'Coach Bear',  emoji: '🌱', tagline: 'Your Freshman Guide' },
+  Sophomore: { name: 'Dev Bear',    emoji: '💻', tagline: 'Career & Skills Coach' },
+  Junior:    { name: 'Dev Bear',    emoji: '💻', tagline: 'Career & Skills Coach' },
+  Senior:    { name: 'Cap Bear',    emoji: '🎓', tagline: 'Your Senior Strategist' },
+};
+
 function getOrCreateSession() {
   let id = sessionStorage.getItem(SESSION_KEY);
   if (!id) {
@@ -22,6 +30,13 @@ export default function App() {
   const [error, setError] = useState(null);
   const [studentYear, setStudentYear] = useState('Freshman');
   const [sessionId] = useState(getOrCreateSession);
+  const [activeAgent, setActiveAgent] = useState(AGENT_DEFAULTS['Freshman']);
+
+  // When the year changes update the displayed agent immediately
+  const handleYearChange = (year) => {
+    setStudentYear(year);
+    setActiveAgent(AGENT_DEFAULTS[year] || AGENT_DEFAULTS['Freshman']);
+  };
 
   const sendMessage = useCallback(async (text) => {
     setError(null);
@@ -41,17 +56,22 @@ export default function App() {
         studentYear
       });
 
+      // Update active agent from response
+      if (response.data.agent) {
+        setActiveAgent(response.data.agent);
+      }
+
       const botMsg = {
         role: 'assistant',
         content: response.data.message,
-        timestamp: response.data.timestamp || new Date().toISOString()
+        timestamp: response.data.timestamp || new Date().toISOString(),
+        agent: response.data.agent,
       };
       setMessages(prev => [...prev, botMsg]);
     } catch (err) {
       const errText = err.response?.data?.error
         || 'BearBot is temporarily unavailable. Please try again.';
       setError(errText);
-      // Remove the user message on error so they can retry
       setMessages(prev => prev.slice(0, -1));
     } finally {
       setIsLoading(false);
@@ -72,7 +92,7 @@ export default function App() {
     <div className="app-container">
       <Sidebar
         studentYear={studentYear}
-        setStudentYear={setStudentYear}
+        setStudentYear={handleYearChange}
         onQuickAction={sendMessage}
         onNewChat={handleNewChat}
       />
@@ -84,8 +104,11 @@ export default function App() {
               <div className="status-dot" />
             </div>
             <div className="chat-header-text">
-              <h2>BearBot — CS Academic Advisor</h2>
-              <p>Morgan State University · {studentYear} Mode · Powered by Groq AI</p>
+              <h2>
+                {activeAgent.emoji} {activeAgent.name}
+                <span className="agent-tagline"> — {activeAgent.tagline}</span>
+              </h2>
+              <p>Morgan State University · {studentYear} · Powered by Groq AI</p>
             </div>
           </div>
           <div className="header-badge">🐻 HBCU Proud</div>
@@ -101,6 +124,7 @@ export default function App() {
           messages={messages}
           isLoading={isLoading}
           onChipClick={sendMessage}
+          activeAgent={activeAgent}
         />
 
         <InputBar onSend={sendMessage} disabled={isLoading} />

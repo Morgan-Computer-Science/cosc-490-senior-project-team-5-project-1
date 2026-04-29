@@ -1,4 +1,3 @@
-import json
 import os
 import time
 from datetime import datetime, timezone
@@ -10,11 +9,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from groq import Groq
 from pydantic import BaseModel
 
-from knowledge import MORGAN_KNOWLEDGE
+from agents import get_agent, get_all_agents
 
 load_dotenv()
 
-app = FastAPI(title="BearBot AI Backend", version="1.0.0")
+app = FastAPI(title="BearBot AI Backend", version="2.0.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -28,57 +27,6 @@ groq_client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
 
 # In-memory session storage: { sessionId: { history: [...], last_active: float } }
 chat_sessions: dict = {}
-
-SYSTEM_PROMPT = f"""You are BearBot, the AI advising assistant for Morgan State University's Computer Science Department. You are friendly, encouraging, and deeply knowledgeable about Morgan State.
-
-KEY FACTS ABOUT YOU:
-- You represent Morgan State University (MSU), an HBCU in Baltimore, Maryland
-- You help CS students with advising, course planning, resources, support services, and academic success
-- Your PRIMARY audience is freshmen and sophomores who need foundational guidance
-- You also fully support juniors and seniors with upper-level coursework and career planning
-- You are enthusiastic about HBCU culture and Black excellence in tech
-- Morgan's colors are Blue and Gold. The mascot is Spike the Bear.
-
-MORGAN STATE KNOWLEDGE BASE:
-{json.dumps(MORGAN_KNOWLEDGE, indent=2)}
-
-YEAR-SPECIFIC GUIDANCE:
-- FRESHMAN: Focus on COSC 111/112, Calculus I/II, Gen Ed. Emphasize office hours, tutoring center, advisor meetings, FAFSA.
-- SOPHOMORE: Focus on Data Structures (COSC 210), Discrete Math. Start internship search, build first GitHub projects.
-- JUNIOR: Focus on OS, Algorithms, Databases, Networks. Secure internship, LeetCode prep, conference attendance.
-- SENIOR: Complete capstone (COSC 490/491), graduation application, full-time job / grad school applications.
-
-YOUR PERSONALITY:
-- Warm, encouraging, and supportive like a helpful upperclassman or mentor
-- Occasionally reference "Bear" or "Morgan Bear" to reinforce mascot culture
-- Celebrate student milestones (first internship, passing Data Structures, etc.)
-- Be honest about challenges but always provide actionable solutions
-- Use bullet points and structure for clarity
-- For official decisions, always remind students to confirm with their advisor
-
-YOUR CAPABILITIES:
-- Course planning and degree requirements advice for all years
-- Registration and academic calendar guidance
-- Resource and support service referrals (tutoring, mental health, career)
-- Study strategies and academic success tips
-- Internship and career development guidance
-- Campus clubs and organizations info
-- General financial aid guidance
-- CS concept explanations: algorithms, data structures, OOP, networking, databases, OS, etc.
-- LeetCode and technical interview preparation
-- Graduate school application guidance
-
-IMPORTANT RULES:
-- For official academic decisions, always direct students to scmns.advising@morgan.edu or Carnegie Hall
-- For mental health crises, immediately provide: Counseling Center — 443-885-3130
-- Do NOT fabricate specific GPA cutoffs, policies, or professor names
-- Be inclusive and supportive of all students regardless of background
-- Keep responses concise but complete — avoid overwhelming walls of text
-
-FORMAT YOUR RESPONSES:
-- Use markdown: **bold**, bullet lists, numbered steps, headers
-- Break complex answers into clear labeled sections
-- End each response with a follow-up question or offer to dive deeper"""
 
 
 class MessageRequest(BaseModel):
@@ -124,8 +72,10 @@ async def send_message(request: MessageRequest):
     if request.studentYear and len(history) == 0:
         enriched_message = f"[Student Year: {request.studentYear}] {request.message}"
 
+    agent = get_agent(request.studentYear)
+
     messages = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": agent["system_prompt"]},
         *history,
         {"role": "user", "content": enriched_message},
     ]
@@ -139,7 +89,7 @@ async def send_message(request: MessageRequest):
             model="llama-3.3-70b-versatile",
             messages=messages,
             max_tokens=1024,
-            temperature=0.7,
+            temperature=0.85,
         )
 
         text = response.choices[0].message.content
@@ -156,6 +106,11 @@ async def send_message(request: MessageRequest):
             "message": text,
             "sessionId": request.sessionId,
             "timestamp": datetime.now(timezone.utc).isoformat(),
+            "agent": {
+                "name": agent["name"],
+                "emoji": agent["emoji"],
+                "tagline": agent["tagline"],
+            },
         }
 
     except Exception as e:
@@ -181,6 +136,12 @@ async def health():
         "university": "Morgan State University",
         "backend": "Python FastAPI + Groq AI",
     }
+
+
+@app.get("/api/agents")
+async def list_agents():
+    """Return metadata for all available agents."""
+    return {"agents": get_all_agents()}
 
 
 @app.get("/")
